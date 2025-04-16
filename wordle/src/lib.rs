@@ -9,6 +9,9 @@ static mut WORDLE: Option<Wordle> = None;
 #[cfg(not(test))]
 const BANK_OF_WORDS: [&str; 3] = ["house", "human", "horse"];
 
+#[cfg(test)]
+const BANK_OF_WORDS: [&str; 1] = ["house"];
+
 #[derive(Default)]
 struct Wordle {
     games: HashMap<ActorId, String>,
