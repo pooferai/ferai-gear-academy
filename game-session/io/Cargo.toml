@@ -1,0 +1,12 @@
+[package]
+name = "game-session-io"
+version = "0.1.0"        # 指定版本号
+edition = "2021"         # 指定编译器版本
+publish = false          # 指定是否发布到 crates.io
+
+[dependencies]
+gstd = { workspace = true }
+gmeta = { workspace = true }
+parity-scale-codec = { workspace = true }
+scale-info = { workspace = true }
+wordle-io = { workspace = true }
