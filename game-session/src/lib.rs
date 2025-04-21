@@ -127,10 +127,7 @@ extern "C" fn handle() {
                         panic!("handle_check_word: invalid word, {}", word);
                     }
 
-                    session.check_count += 1;
-                    if session.check_count > MAX_CHECK_COUNT
-                        || exec::block_height() > session.start_block + CHECK_GAME_STATUS_DELAY
-                    {
+                    if exec::block_height() > session.start_block + CHECK_GAME_STATUS_DELAY {
                         session.status = SessionStatus::StartGameWaiting;
                         session.result = SessionResult::Lose;
                         msg::reply(
@@ -160,6 +157,7 @@ extern "C" fn handle() {
                         contained_in_word,
                     } = recv_event
                     {
+                        session.check_count += 1;
                         session.msg_ids = (0.into(), 0.into());
                         if correct_positions.len() == 5 {
                             session.status = SessionStatus::StartGameWaiting;
